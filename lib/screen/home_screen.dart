@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuyen_sinh_app/page/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Dựa vào _selectedIndex để hiển thị nội dung tương ứng
     switch (_selectedIndex) {
       case 0:
-        return Center(child: Text("Home Page", style: TextStyle(fontSize: 24)));
+        return HomePage();
       case 1:
         return Center(child: Text("Search Page", style: TextStyle(fontSize: 24)));
       case 2:

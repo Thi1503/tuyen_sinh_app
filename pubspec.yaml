@@ -58,6 +58,10 @@ flutter:
     - assets/logohust.png
     - assets/hustc1.jpg
     - assets/login_bg.jpg
+    - assets/picture_1.jpg
+    - assets/picture_2.jpg
+    - assets/picture_3.jpg
+    - assets/picture_4.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
