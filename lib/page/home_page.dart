@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewsArticle {
@@ -13,27 +14,26 @@ class NewsArticle {
   });
 }
 
-// Dữ liệu giả cho các bài viết tin tức
 final List<NewsArticle> newsArticles = [
   NewsArticle(
     title: 'News 1',
     description: 'This is a short description for news 1.',
-    imageUrl: 'assets/picture_1.jpg', // Ảnh từ thư mục assets
+    imageUrl: 'assets/picture_1.jpg',
   ),
   NewsArticle(
     title: 'News 2',
     description: 'This is a short description for news 2.',
-    imageUrl: 'assets/picture_2.jpg', // Ảnh từ URL mạng
+    imageUrl: 'assets/picture_2.jpg',
   ),
   NewsArticle(
     title: 'News 3',
     description: 'This is a short description for news 3.',
-    imageUrl: 'assets/picture_3.jpg', // Ảnh từ URL mạng
+    imageUrl: 'assets/picture_3.jpg',
   ),
   NewsArticle(
     title: 'News 4',
-    description: 'This is a short description for news 3.',
-    imageUrl: 'assets/picture_4.jpg', // Ảnh từ URL mạng
+    description: 'This is a short description for news 4.',
+    imageUrl: 'assets/picture_4.jpg',
   ),
 ];
 
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _pageController = PageController(initialPage: _currentPage);
 
-    // Tự động cuộn trang mỗi 5 giây
     Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (_currentPage < newsArticles.length - 1) {
         _currentPage++;
@@ -77,12 +76,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.only(top: 10,bottom: 5),
         child: Column(
           children: [
-            // PageView chiếm toàn bộ chiều ngang
             SizedBox(
-              height: 250,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*0.2, // Thay đổi chiều cao ở đây
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
@@ -98,7 +97,6 @@ class _HomePageState extends State<HomePage> {
                       final article = newsArticles[index];
                       return GestureDetector(
                         onTap: () {
-                          // Thực hiện hành động khi nhấn vào, ví dụ hiển thị thông báo
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
@@ -113,35 +111,21 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Card(
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                // Hiển thị ảnh của bài báo, tự động chọn asset hoặc network
-                                ClipRRect(
-                                  borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-                                  child: article.imageUrl.startsWith('http')
-                                      ? Image.network(
-                                    article.imageUrl,
-                                    height: 150,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  )
-                                      : Image.asset(
-                                    article.imageUrl,
-                                    height: 150,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                        child: ClipRRect(
+
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                article.imageUrl,
+                                width: MediaQuery.of(context).size.width,
+                                fit: BoxFit.cover,
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  color: Colors.black.withOpacity(0.7),
+                                  padding: EdgeInsets.all(10.0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -150,53 +134,36 @@ class _HomePageState extends State<HomePage> {
                                         style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       SizedBox(height: 5),
                                       Text(
                                         article.description,
-                                        style: TextStyle(fontSize: 14),
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                        ),
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       );
                     },
                   ),
-                  // Vòng tròn biểu thị trang hiện tại
-                  Positioned(
-                    bottom: 10,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(newsArticles.length, (index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 4),
-                          width: _currentPage == index ? 12 : 8,
-                          height: _currentPage == index ? 12 : 8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _currentPage == index ? Colors.blue : Colors.grey,
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
                 ],
               ),
             ),
 
-            SizedBox(height: 20),
-            // Nội dung bổ sung dưới PageView
-            Text(
-              'Other content goes here...',
-              style: TextStyle(fontSize: 16),
-            ),
+            const SizedBox(height: 20),
+
+
           ],
         ),
       ),
