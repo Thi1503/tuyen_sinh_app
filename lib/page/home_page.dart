@@ -1,41 +1,9 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tuyen_sinh_app/widget/custom_container.dart';
 
-class NewsArticle {
-  final String title;
-  final String description;
-  final String imageUrl;
-
-  NewsArticle({
-    required this.title,
-    required this.description,
-    required this.imageUrl,
-  });
-}
-
-final List<NewsArticle> newsArticles = [
-  NewsArticle(
-    title: 'News 1',
-    description: 'This is a short description for news 1.',
-    imageUrl: 'assets/picture_1.jpg',
-  ),
-  NewsArticle(
-    title: 'News 2',
-    description: 'This is a short description for news 2.',
-    imageUrl: 'assets/picture_2.jpg',
-  ),
-  NewsArticle(
-    title: 'News 3',
-    description: 'This is a short description for news 3.',
-    imageUrl: 'assets/picture_3.jpg',
-  ),
-  NewsArticle(
-    title: 'News 4',
-    description: 'This is a short description for news 4.',
-    imageUrl: 'assets/picture_4.jpg',
-  ),
-];
+import '../class/class_new_article.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -76,12 +44,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 10,bottom: 5),
+        padding: EdgeInsets.only(top: 10, bottom: 5),
         child: Column(
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*0.2, // Thay đổi chiều cao ở đây
+              height: MediaQuery.of(context).size.height *
+                  0.2, // Thay đổi chiều cao ở đây
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
@@ -112,7 +81,6 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: ClipRRect(
-
                           child: Stack(
                             children: [
                               Image.asset(
@@ -127,20 +95,21 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.black.withOpacity(0.7),
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         article.title,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                         ),
                                       ),
-                                      SizedBox(height: 5),
+                                      const SizedBox(height: 5),
                                       Text(
                                         article.description,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 14,
                                           color: Colors.white,
                                         ),
@@ -160,10 +129,120 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-
-            const SizedBox(height: 20),
-
-
+            const SizedBox(height: 10),
+            Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: MediaQuery.of(context).size.height * 0.1,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  border: Border.all(
+                    color: Colors.black, // Màu viền
+                    width: 2.0, // Độ dày của viền
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage("assets/banner_01.jpg"),
+                    fit: BoxFit
+                        .cover, // Đảm bảo ảnh nền bao phủ toàn bộ container
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // SizedBox(height: 10,),
+                    const Text(
+                      "KỲ THI ĐÁNH GIÁ TƯ DUY (TSA)",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // Login functionality here
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(150, 50),
+                        backgroundColor:
+                            Colors.transparent, // Remove background color
+                        elevation: 0, // Remove shadow to make it look flat
+                        side: const BorderSide(
+                            color: Colors.white, width: 2), // Add white border
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      icon: const Icon(
+                        Icons.play_arrow,
+                        color: Colors.white,
+                      ),
+                      label: const Text(
+                        'Chi tiết',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.centerLeft, // Căn văn bản về phía trái
+                child: Text(
+                  'Điểm nổi bật',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFFC41E3A)),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                        onTap: () {},
+                        child: const CustomContainer(
+                          imagePath: 'assets/icon_1.png',
+                          text:
+                              'ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO GIÀU KINH NGHIỆM',
+                        )),
+                    const SizedBox(width:10),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const CustomContainer(
+                          imagePath: 'assets/icon_2.png',
+                          text:
+                          'LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI',
+                        )),
+                    const SizedBox(width:10),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const CustomContainer(
+                          imagePath: 'assets/icon_3.png',
+                          text:
+                          'TOP 801-1000 TRƯỜNG ĐẠI HỌC TỐT NHẤT THẾ GIỚI',
+                        )),
+                    const SizedBox(width:10),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const CustomContainer(
+                          imagePath: 'assets/icon_4.png',
+                          text:
+                          'BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TỐP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020',
+                        )),
+                    const SizedBox(width:10),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const CustomContainer(
+                          imagePath: 'assets/icon_5.png',
+                          text:
+                          'CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC',
+                        )),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
