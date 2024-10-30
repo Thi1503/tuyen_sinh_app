@@ -22,11 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.red[50],
+      backgroundColor: Color(0xFFC41E3A),
       leading: IconButton(
         icon: Icon(
           Icons.menu,
-          color: Colors.black,
+          color: Colors.white,
           size: 30,
         ),
         onPressed: () {
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Text(
             'Tuyển sinh',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.notifications_none, color: Colors.black),
+              icon: Icon(Icons.notifications, color: Colors.white),
               onPressed: () {
                 // Hành động khi nhấn biểu tượng thông báo
               },
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   BottomAppBar _buildBottomAppBar() {
     return BottomAppBar(
-      color: Colors.red[50],
+      color:Color(0xFFC41E3A),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -140,12 +140,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Icon(
             icon,
             size: 30,
-            color: _selectedIndex == index ? Colors.blue : Colors.grey,
+            color: _selectedIndex == index ? Colors.greenAccent : Colors.white70,
           ),
           Text(
             label,
             style: TextStyle(
-              color: _selectedIndex == index ? Colors.blue : Colors.grey,
+              color: _selectedIndex == index ? Colors.greenAccent : Colors.white70,
               fontSize: 12,
             ),
           ),

@@ -189,7 +189,10 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft, // Căn văn bản về phía trái
                 child: Text(
                   'Điểm nổi bật',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFFC41E3A)),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A)),
                 ),
               ),
             ),
@@ -207,37 +210,36 @@ class _HomePageState extends State<HomePage> {
                           text:
                               'ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO GIÀU KINH NGHIỆM',
                         )),
-                    const SizedBox(width:10),
+                    const SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {},
                         child: const CustomContainer(
                           imagePath: 'assets/icon_2.png',
                           text:
-                          'LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI',
+                              'LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI',
                         )),
-                    const SizedBox(width:10),
+                    const SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {},
                         child: const CustomContainer(
                           imagePath: 'assets/icon_3.png',
-                          text:
-                          'TOP 801-1000 TRƯỜNG ĐẠI HỌC TỐT NHẤT THẾ GIỚI',
+                          text: 'TOP 801-1000 TRƯỜNG ĐẠI HỌC TỐT NHẤT THẾ GIỚI',
                         )),
-                    const SizedBox(width:10),
+                    const SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {},
                         child: const CustomContainer(
                           imagePath: 'assets/icon_4.png',
                           text:
-                          'BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TỐP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020',
+                              'BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TỐP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020',
                         )),
-                    const SizedBox(width:10),
+                    const SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {},
                         child: const CustomContainer(
                           imagePath: 'assets/icon_5.png',
                           text:
-                          'CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC',
+                              'CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC',
                         )),
                   ],
                 ),
