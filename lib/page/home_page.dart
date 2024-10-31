@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tuyen_sinh_app/widget/custom_container.dart';
-
 import '../class/class_new_article.dart';
+import '../widget/inkwellCard.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -49,8 +48,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height *
-                  0.2, // Thay đổi chiều cao ở đây
+              height: MediaQuery.of(context).size.height * 0.2,
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
@@ -96,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         article.title,
@@ -131,62 +129,60 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 10),
             Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: MediaQuery.of(context).size.height * 0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  border: Border.all(
-                    color: Colors.black, // Màu viền
-                    width: 2.0, // Độ dày của viền
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("assets/banner_01.jpg"),
-                    fit: BoxFit
-                        .cover, // Đảm bảo ảnh nền bao phủ toàn bộ container
-                  ),
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2.0,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // SizedBox(height: 10,),
-                    const Text(
-                      "KỲ THI ĐÁNH GIÁ TƯ DUY (TSA)",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        // Login functionality here
-                      },
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: Size(150, 50),
-                        backgroundColor:
-                            Colors.transparent, // Remove background color
-                        elevation: 0, // Remove shadow to make it look flat
-                        side: const BorderSide(
-                            color: Colors.white, width: 2), // Add white border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                      ),
-                      icon: const Icon(
-                        Icons.play_arrow,
+                image: DecorationImage(
+                  image: AssetImage("assets/banner_01.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "KỲ THI ĐÁNH GIÁ TƯ DUY (TSA)",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // Login functionality here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: Size(150, 50),
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      side: const BorderSide(
                         color: Colors.white,
+                        width: 2,
                       ),
-                      label: const Text(
-                        'Chi tiết',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
-                  ],
-                )),
-            const SizedBox(
-              height: 10,
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
+                      'Chi tiết',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            const SizedBox(height: 10),
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: Align(
-                alignment: Alignment.centerLeft, // Căn văn bản về phía trái
+                alignment: Alignment.centerLeft,
                 child: Text(
                   'Điểm nổi bật',
                   style: TextStyle(
@@ -208,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                         child: const CustomContainer(
                           imagePath: 'assets/icon_1.png',
                           text:
-                              'ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO GIÀU KINH NGHIỆM',
+                          'ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO GIÀU KINH NGHIỆM',
                         )),
                     const SizedBox(width: 10),
                     GestureDetector(
@@ -216,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                         child: const CustomContainer(
                           imagePath: 'assets/icon_2.png',
                           text:
-                              'LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI',
+                          'LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI',
                         )),
                     const SizedBox(width: 10),
                     GestureDetector(
@@ -231,7 +227,7 @@ class _HomePageState extends State<HomePage> {
                         child: const CustomContainer(
                           imagePath: 'assets/icon_4.png',
                           text:
-                              'BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TỐP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020',
+                          'BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TỐP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020',
                         )),
                     const SizedBox(width: 10),
                     GestureDetector(
@@ -239,12 +235,113 @@ class _HomePageState extends State<HomePage> {
                         child: const CustomContainer(
                           imagePath: 'assets/icon_5.png',
                           text:
-                              'CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC',
+                          'CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC',
                         )),
                   ],
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Tuyển sinh đại học',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A)),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: ListView.builder(
+                itemCount: newsArticles.length,
+                itemBuilder: (context, index) {
+                  final article = newsArticles[index];
+                  return InkWellCard(
+                    imagePath: article.imageUrl,
+                    title: article.title,
+                    description: article.description,
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                  onPressed: () {
+                    // Add your action here
+                  },
+                  child: const Text(
+                    '> Xem thêm',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Tuyển sinh sau đại học',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A)),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.95,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: ListView.builder(
+                itemCount: newsArticles.length,
+                itemBuilder: (context, index) {
+                  final article = newsArticles[index];
+                  return InkWellCard(
+                    imagePath: article.imageUrl,
+                    title: article.title,
+                    description: article.description,
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                  onPressed: () {
+                    // Add your action here
+                  },
+                  child: const Text(
+                    '> Xem thêm',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
