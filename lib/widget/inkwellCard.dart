@@ -20,7 +20,7 @@ class InkWellCard extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.all(5.0),
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           // Removing color and border by not specifying any color or border
           borderRadius: BorderRadius.circular(8),

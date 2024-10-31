@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tuyen_sinh_app/widget/custom_container.dart';
+import '../class/category.dart';
 import '../class/class_new_article.dart';
+import '../widget/category_card.dart';
 import '../widget/inkwellCard.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,6 +48,7 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.only(top: 10, bottom: 5),
         child: Column(
           children: [
+            // Banner section
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.2,
@@ -93,8 +96,7 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.black.withOpacity(0.7),
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         article.title,
@@ -128,6 +130,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 10),
+
+            // Banner with button section
             Container(
               width: MediaQuery.of(context).size.width * 0.95,
               height: MediaQuery.of(context).size.height * 0.1,
@@ -179,6 +183,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 10),
+
+            // Highlight section
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: Align(
@@ -242,6 +248,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 10),
+
+            // Undergraduate Admission Section
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: Align(
@@ -291,9 +299,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-
-
-            const SizedBox(height: 10),
+            // Postgraduate Admission Section
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: Align(
@@ -342,9 +348,49 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
+            // Popular Categories Section
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Danh mục',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC41E3A)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                itemCount: categories.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: 1.0,
+                ),
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  return CategoryCard(category: category);
+                },
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+// Category Model
+
+
+// Category Card Widget
+
+// Category List
+
