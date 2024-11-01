@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuyen_sinh_app/screen/article_screen.dart';
 
 class InkWellCard extends StatelessWidget {
   final String imagePath;
@@ -15,12 +16,15 @@ class InkWellCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Add action here
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>  ArticleScreen()),
+        );
         print('$title tapped!');
       },
       child: Container(
         margin: EdgeInsets.all(5.0),
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           // Removing color and border by not specifying any color or border
           borderRadius: BorderRadius.circular(8),

@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tuyen_sinh_app/page/home_page.dart';
+import 'package:tuyen_sinh_app/page/my_profile_page.dart';
+import 'package:tuyen_sinh_app/page/question_and_answer_page.dart';
+
+import '../page/search_page.dart';
+import '../page/support_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
+      drawer: _buildDrawer(),
       body: _buildBodyContent(),
       bottomNavigationBar: _buildBottomAppBar(),
     );
@@ -22,17 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar _buildAppBar() {
     return AppBar(
+      iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: Color(0xFFC41E3A),
-      leading: IconButton(
-        icon: Icon(
-          Icons.menu,
-          color: Colors.white,
-          size: 30,
-        ),
-        onPressed: () {
-          // Hành động khi nhấn nút menu
-        },
-      ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -92,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   BottomAppBar _buildBottomAppBar() {
     return BottomAppBar(
-      color:Color(0xFFC41E3A),
+      color: Color(0xFFC41E3A),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -106,25 +104,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   Widget _buildBodyContent() {
-    // Dựa vào _selectedIndex để hiển thị nội dung tương ứng
     switch (_selectedIndex) {
       case 0:
         return HomePage();
       case 1:
-        return Center(child: Text("Search Page", style: TextStyle(fontSize: 24)));
+        return CenteredSearchPage();
       case 2:
-        return Center(child: Text("Q&A Page", style: TextStyle(fontSize: 24)));
+        return QuestionAndAnswerPage();
       case 3:
-        return Center(child: Text("Support Page", style: TextStyle(fontSize: 24)));
+        return SupportPage();
       case 4:
-        return Center(child: Text("My profite Page", style: TextStyle(fontSize: 24)));
+        return ProfilePage();
       default:
         return Center(child: Text("Page not found", style: TextStyle(fontSize: 24)));
     }
   }
-
 
   Widget _buildBottomIcon(IconData icon, String label, int index) {
     return GestureDetector(
@@ -151,6 +146,168 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Drawer _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Color(0xFFC41E3A)),
+            accountName: Text('Lê Đình Thi', style: TextStyle(fontWeight: FontWeight.bold)),
+            accountEmail: Text('Chúc bạn một ngày tốt lành !'),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.person, size: 50, color: Colors.blue.shade700),
+            ),
+          ),
+
+          ListTile(
+            title: Text(
+              "Home",
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
+            ),
+            leading: Icon(Icons.home, color: Colors.teal),
+            onTap: () {
+              // Xử lý khi người dùng nhấn vào nút
+              // Ví dụ: Chuyển hướng hoặc thực hiện một hành động
+            },
+          ),
+          _buildExpansionTile(
+            title: 'Hướng nghiệp',
+            icon: Icons.work,
+            children: [
+              _buildSubItem('Đăng ký trải nghiệm khối Tiểu học -THCS'),
+              _buildSubItem('Đăng ký trải nghiệm khối THPT'),
+            ],
+          ),
+          _buildExpansionTile(
+            title: 'Tuyển sinh Đại học',
+            icon: Icons.school,
+            children: [
+              _buildSubItem('Thông tin chung'),
+              _buildSubItem('Chương trình đào tạo đại học'),
+              _buildSubItem('Xét tuyển tài năng'),
+              _buildSubItem('Kỳ thi đánh giá tư duy'),
+              _buildSubItem('Xác thực chứng chỉ ngoại ngữ'),
+              _buildSubItem('Điểm chuẩn các năm'),
+            ],
+          ),
+          _buildExpansionTile(
+            title: 'Tuyển sinh sau Đại học',
+            icon: Icons.school_outlined,
+            children: [
+              _buildSubItem('Tuyển sinh Kỹ sư chuyên sâu'),
+              _buildSubItem('Equivalence and Recognition'),
+              _buildSubItem('Education Visa'),
+            ],
+          ),
+          _buildExpansionTile(
+            title: 'International Admissions',
+            icon: Icons.public,
+            children: [
+              _buildSubItem('Overview'),
+            ],
+          ),
+          _buildExpansionTile(
+            title: 'Học phí & Học bổng',
+            icon: Icons.monetization_on_rounded,
+            children: [
+              _buildSubItem('Overview'),
+            ],
+          ),
+          ListTile(
+            title: Text(
+              "Hỏi đáp",
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
+            ),
+            leading: Icon(Icons.question_answer, color: Colors.teal),
+            onTap: () {
+              // Xử lý khi người dùng nhấn vào nút
+              // Ví dụ: Chuyển hướng hoặc thực hiện một hành động
+            },
+          ),
+          _buildExpansionTile(
+            title: 'Liên hệ',
+            icon: Icons.contact_mail,
+            children: [
+              _buildSubItem('Overview'),
+            ],
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.support_agent),
+            title: Text('Hỗ trợ'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Cài đặt'),
+            onTap: () {},
+          ),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+                  onPressed: () {
+                    // Hành động khi nhấn Facebook
+                  },
+                ),
+                IconButton(
+                  icon: Icon(FontAwesomeIcons.youtube, color: Colors.red),
+                  onPressed: () {
+                    // Hành động khi nhấn Twitter
+                  },
+                ),
+                IconButton(
+                  icon: Icon(FontAwesomeIcons.instagram, color: Colors.purple),
+                  onPressed: () {
+                    // Hành động khi nhấn Instagram
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildExpansionTile({
+    required String title,
+    IconData? icon, // Đặt icon là tùy chọn bằng cách sử dụng `IconData?`
+    required List<Widget> children,
+  }) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
+        ),
+        leading: icon != null ? Icon(icon, color: Colors.teal) : null, // Chỉ hiển thị icon nếu nó không phải là null
+        children: children,
+      ),
+    );
+  }
+
+
+  Widget _buildSubItem(String text) {
+    return ListTile(
+      title: Text(
+        text,
+        style: TextStyle(fontSize: 14, color: Colors.black87),
+      ),
+      onTap: () {
+        // Add action here if needed
+      },
+      contentPadding: EdgeInsets.only(left: 32.0),
     );
   }
 }
