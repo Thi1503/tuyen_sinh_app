@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tuyen_sinh_app/screen/article_screen.dart';
 import 'package:tuyen_sinh_app/screen/home_screen.dart';
+import 'package:tuyen_sinh_app/screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
